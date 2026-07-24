@@ -110,6 +110,7 @@ html[data-bg="image"] body::after {
   gap: 1.25rem;
 }
 
+/* Natural card sizes; leftover viewport space splits evenly above/below */
 .layout {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
@@ -117,6 +118,8 @@ html[data-bg="image"] body::after {
     "hero forecast"
     "conditions forecast";
   gap: 1.25rem;
+  margin-top: 3rem;
+  margin-bottom: auto;
 }
 
 .hero-card { grid-area: hero; }
@@ -131,7 +134,7 @@ html[data-bg="image"] body::after {
   box-shadow: var(--glass-shadow);
   backdrop-filter: var(--glass-filter);
   -webkit-backdrop-filter: var(--glass-filter);
-  padding: 1.5rem;
+  padding: 1.85rem;
 }
 
 .card-title {
@@ -148,7 +151,8 @@ html[data-bg="image"] body::after {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 0;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .brand {
@@ -278,7 +282,6 @@ html[data-bg="image"] body::after {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 2rem;
-  min-height: 300px;
   padding: 2rem 2.5rem;
 }
 
@@ -346,9 +349,16 @@ html[data-bg="image"] body::after {
 }
 
 /* ============ Air conditions ============ */
+.conditions-card {
+  display: flex;
+  flex-direction: column;
+}
+
 .conditions-grid {
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-content: center;
   gap: 1rem;
 }
 
@@ -356,7 +366,7 @@ html[data-bg="image"] body::after {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.9rem 1rem;
+  padding: 1.1rem 1.2rem;
   background: var(--surface);
   border-radius: var(--radius-md);
   box-shadow: var(--surface-shadow);
@@ -401,7 +411,7 @@ html[data-bg="image"] body::after {
   grid-template-columns: 88px 1fr auto;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.8rem 0.5rem;
+  padding: 0.95rem 0.6rem;
   border-bottom: 1px solid rgba(33, 31, 54, 0.08);
 }
 
@@ -411,7 +421,7 @@ html[data-bg="image"] body::after {
 
 /* Highlight today, like the reference's active pill */
 .forecast-row:first-child {
-  padding: 0.8rem 0.75rem;
+  padding: 0.95rem 0.85rem;
   margin-bottom: 0.25rem;
   background: var(--surface);
   border-radius: var(--radius-md);
@@ -534,6 +544,7 @@ html[data-bg="image"] body::after {
 @media (max-width: 940px) {
   .layout {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     grid-template-areas:
       "hero"
       "forecast"

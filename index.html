@@ -16,7 +16,7 @@
     <link id="theme-style" rel="stylesheet" href="themes/neobrutalism.css" />
     <script>
       // Apply the saved theme + background mode before first paint to avoid a flash
-      const savedTheme = localStorage.getItem("weather-theme");
+      const savedTheme = localStorage.getItem("wa-theme");
       if (savedTheme === "glassmorphism" || savedTheme === "neobrutalism") {
         // ?v= busts the browser cache so CSS edits always show up
         document.getElementById("theme-style").href = `themes/${savedTheme}.css?v=${Date.now()}`;

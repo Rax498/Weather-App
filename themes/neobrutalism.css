@@ -66,6 +66,7 @@ body {
   gap: 1.5rem;
 }
 
+/* Natural card sizes; leftover viewport space splits evenly above/below */
 .layout {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
@@ -73,6 +74,8 @@ body {
     "hero forecast"
     "conditions forecast";
   gap: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: auto;
 }
 
 .hero-card { grid-area: hero; }
@@ -85,7 +88,7 @@ body {
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 1.5rem;
+  padding: 1.85rem;
 }
 
 .card-title {
@@ -109,7 +112,8 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 0;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .brand {
@@ -227,7 +231,6 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 2rem;
-  min-height: 300px;
   padding: 2rem 2.5rem;
 }
 
@@ -296,9 +299,16 @@ body {
 }
 
 /* ============ Air conditions ============ */
+.conditions-card {
+  display: flex;
+  flex-direction: column;
+}
+
 .conditions-grid {
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-content: center;
   gap: 1rem;
 }
 
@@ -306,7 +316,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.9rem 1rem;
+  padding: 1.1rem 1.2rem;
   background: var(--clr-surface);
   border: 2px solid var(--border-color);
   border-radius: var(--radius-sm);
@@ -360,7 +370,7 @@ body {
   grid-template-columns: 88px 1fr auto;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.8rem 0.25rem;
+  padding: 0.95rem 0.35rem;
   border-bottom: 2px solid var(--border-color);
 }
 
@@ -370,7 +380,7 @@ body {
 
 /* Highlight today */
 .forecast-row:first-child {
-  padding: 0.8rem 0.75rem;
+  padding: 0.95rem 0.85rem;
   margin-bottom: 0.5rem;
   background: var(--clr-yellow);
   border: 2px solid var(--border-color);
@@ -485,6 +495,7 @@ body {
 @media (max-width: 940px) {
   .layout {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     grid-template-areas:
       "hero"
       "forecast"

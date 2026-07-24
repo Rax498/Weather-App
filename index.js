@@ -203,18 +203,18 @@ const applyTheme = (id) => {
   $("theme-style").href = `themes/${theme.id}.css?v=${Date.now()}`;
   $("themeLabel").textContent = theme.label;
   document.documentElement.dataset.theme = theme.id;
-  localStorage.setItem("weather-theme", theme.id);
+  localStorage.setItem("wa-theme", theme.id);
   // The background toggle only exists in the glass theme
   $("bgBtn").hidden = theme.id !== "glassmorphism";
 };
 
 $("themeBtn").addEventListener("click", () => {
-  const current = localStorage.getItem("weather-theme") ?? THEMES[0].id;
+  const current = localStorage.getItem("wa-theme") ?? THEMES[0].id;
   const idx = THEMES.findIndex((t) => t.id === current);
   applyTheme(THEMES[(idx + 1) % THEMES.length].id);
 });
 
-applyTheme(localStorage.getItem("weather-theme") ?? THEMES[0].id);
+applyTheme(localStorage.getItem("wa-theme") ?? THEMES[0].id);
 
 // ==== Background toggle (glass theme: gradient <-> photo) ====
 const applyBg = (mode) => {
