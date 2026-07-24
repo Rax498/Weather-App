@@ -1,10 +1,5 @@
 /* ================================================================
-   GLASSMORPHISM THEME — after Paperpillar's "Store Management
-   Dashboard" (dribbble.com/shots/14915793): pastel lavender-peach
-   backdrop, milky borderless glass, violet accent.
-   Background modes (toggled by the BG button, html[data-bg]):
-     gradient (default) | image (wallhaven Fuji photo)
-   Tweak everything from the tokens below.
+   Inspired by GLASSMORPHISM style
    ================================================================ */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap");
 
@@ -20,10 +15,26 @@
   /* Backdrop — gradient mode: saturated blobs so the blur is visible */
   --bg-base: #dfe3f8;
   --bg-gradient:
-    radial-gradient(38% 45% at 14% 16%, rgba(139, 128, 249, 0.85) 0%, rgba(139, 128, 249, 0) 58%),
-    radial-gradient(30% 38% at 82% 12%, rgba(255, 158, 195, 0.7) 0%, rgba(255, 158, 195, 0) 60%),
-    radial-gradient(36% 44% at 86% 78%, rgba(255, 165, 120, 0.8) 0%, rgba(255, 165, 120, 0) 60%),
-    radial-gradient(30% 36% at 30% 88%, rgba(96, 165, 250, 0.65) 0%, rgba(96, 165, 250, 0) 60%),
+    radial-gradient(
+      38% 45% at 14% 16%,
+      rgba(139, 128, 249, 0.85) 0%,
+      rgba(139, 128, 249, 0) 58%
+    ),
+    radial-gradient(
+      30% 38% at 82% 12%,
+      rgba(255, 158, 195, 0.7) 0%,
+      rgba(255, 158, 195, 0) 60%
+    ),
+    radial-gradient(
+      36% 44% at 86% 78%,
+      rgba(255, 165, 120, 0.8) 0%,
+      rgba(255, 165, 120, 0) 60%
+    ),
+    radial-gradient(
+      30% 36% at 30% 88%,
+      rgba(96, 165, 250, 0.65) 0%,
+      rgba(96, 165, 250, 0) 60%
+    ),
     linear-gradient(160deg, #d3d7f7 0%, #e4dcf4 50%, #f6dcc9 100%);
   /* Backdrop — image mode (haze: raise the alpha to soften the photo) */
   --bg-image: url("../wallhaven-yqjr6d.jpg");
@@ -35,7 +46,8 @@
   --surface: rgba(255, 255, 255, 0.82);
   --glass-border: rgba(255, 255, 255, 0.55);
   --glass-filter: blur(4px) saturate(135%);
-  --glass-shadow: 0 16px 40px rgba(76, 66, 145, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --glass-shadow:
+    0 16px 40px rgba(76, 66, 145, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   --surface-shadow: 0 4px 16px rgba(76, 66, 145, 0.08);
 
   --radius-lg: 24px;
@@ -97,7 +109,11 @@ body::after {
   width: 55vw;
   height: 55vw;
   z-index: -1;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent 60%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.5),
+    transparent 60%
+  );
   pointer-events: none;
   animation: drift 14s ease-in-out infinite alternate;
 }
@@ -107,8 +123,12 @@ html[data-bg="image"] body::after {
 }
 
 @keyframes drift {
-  from { transform: translate(0, 0); }
-  to { transform: translate(45vw, 25vh); }
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(45vw, 25vh);
+  }
 }
 
 /* ============ Layout ============ */
@@ -134,9 +154,15 @@ html[data-bg="image"] body::after {
   margin-bottom: auto;
 }
 
-.hero-card { grid-area: hero; }
-.conditions-card { grid-area: conditions; }
-.forecast-card { grid-area: forecast; }
+.hero-card {
+  grid-area: hero;
+}
+.conditions-card {
+  grid-area: conditions;
+}
+.forecast-card {
+  grid-area: forecast;
+}
 
 /* ============ Glass cards ============ */
 .card {
@@ -231,7 +257,9 @@ html[data-bg="image"] body::after {
   background: var(--clr-accent);
   color: #fff;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .searchBtn:hover {
@@ -494,7 +522,9 @@ html[data-bg="image"] body::after {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ============ Error message ============ */
