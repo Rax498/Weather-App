@@ -25,16 +25,16 @@
     radial-gradient(36% 44% at 86% 78%, rgba(255, 165, 120, 0.8) 0%, rgba(255, 165, 120, 0) 60%),
     radial-gradient(30% 36% at 30% 88%, rgba(96, 165, 250, 0.65) 0%, rgba(96, 165, 250, 0) 60%),
     linear-gradient(160deg, #d3d7f7 0%, #e4dcf4 50%, #f6dcc9 100%);
-  /* Backdrop — image mode */
+  /* Backdrop — image mode (haze: raise the alpha to soften the photo) */
   --bg-image: url("../wallhaven-yqjr6d.jpg");
-  --bg-image-haze: rgba(255, 255, 255, 0.12);
+  --bg-image-haze: rgba(255, 255, 255, 0);
 
   /* Glass surfaces */
-  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-bg: rgba(255, 255, 255, 0.38);
   --glass-bg-strong: rgba(255, 255, 255, 0.62);
   --surface: rgba(255, 255, 255, 0.82);
   --glass-border: rgba(255, 255, 255, 0.55);
-  --glass-filter: blur(24px) saturate(160%);
+  --glass-filter: blur(12px) saturate(150%);
   --glass-shadow: 0 16px 40px rgba(76, 66, 145, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   --surface-shadow: 0 4px 16px rgba(76, 66, 145, 0.08);
 
@@ -107,16 +107,18 @@ html[data-bg="image"] body::after {
   padding: clamp(1rem, 3vw, 2rem);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 1.25rem;
 }
 
+/* Top bar stays up top; the cards center in the remaining space */
 .layout {
+  flex: 1;
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   grid-template-areas:
     "hero forecast"
     "conditions forecast";
+  align-content: center;
   gap: 1.25rem;
 }
 
@@ -149,6 +151,7 @@ html[data-bg="image"] body::after {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .brand {

@@ -63,16 +63,18 @@ body {
   padding: clamp(1rem, 3vw, 2rem);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 1.5rem;
 }
 
+/* Top bar stays up top; the cards center in the remaining space */
 .layout {
+  flex: 1;
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   grid-template-areas:
     "hero forecast"
     "conditions forecast";
+  align-content: center;
   gap: 1.5rem;
 }
 
@@ -110,6 +112,7 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .brand {
