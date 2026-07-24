@@ -10,11 +10,11 @@
 
 /* ============ Design tokens ============ */
 :root {
-  --clr-accent: #7c6cf5;
-  --clr-accent-deep: #5b4bd6;
-  --clr-accent-soft: rgba(124, 108, 245, 0.12);
-  --clr-text: #211f36;
-  --clr-text-soft: #6f6d85;
+  --clr-accent: #6a58ee;
+  --clr-accent-deep: #4f3fd8;
+  --clr-accent-soft: rgba(106, 88, 238, 0.16);
+  --clr-text: #16142a;
+  --clr-text-soft: #4c4a66;
   --clr-error-text: #b91c1c;
 
   /* Backdrop — gradient mode: saturated blobs so the blur is visible */
@@ -34,7 +34,7 @@
   --glass-bg-strong: rgba(255, 255, 255, 0.62);
   --surface: rgba(255, 255, 255, 0.82);
   --glass-border: rgba(255, 255, 255, 0.55);
-  --glass-filter: blur(7px) saturate(140%);
+  --glass-filter: blur(4px) saturate(135%);
   --glass-shadow: 0 16px 40px rgba(76, 66, 145, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   --surface-shadow: 0 4px 16px rgba(76, 66, 145, 0.08);
 
@@ -110,15 +110,12 @@ html[data-bg="image"] body::after {
   gap: 1.25rem;
 }
 
-/* Top bar stays up top; the cards center in the remaining space */
 .layout {
-  flex: 1;
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   grid-template-areas:
     "hero forecast"
     "conditions forecast";
-  align-content: center;
   gap: 1.25rem;
 }
 
@@ -151,7 +148,7 @@ html[data-bg="image"] body::after {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .brand {
@@ -342,9 +339,9 @@ html[data-bg="image"] body::after {
   gap: 0.4rem;
   padding: 0.35rem 0.8rem;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--clr-accent-deep);
-  background: var(--clr-accent-soft);
+  background: rgba(255, 255, 255, 0.78);
   border-radius: var(--radius-pill);
 }
 
