@@ -216,6 +216,11 @@ body {
   box-shadow: var(--shadow-pressed);
 }
 
+/* Background toggle only applies to the glass theme */
+.bgBtn {
+  display: none;
+}
+
 /* ============ Hero card ============ */
 .hero-card {
   display: flex;

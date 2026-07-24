@@ -213,6 +213,19 @@ $("themeBtn").addEventListener("click", () => {
 
 applyTheme(localStorage.getItem("weather-theme") ?? THEMES[0].id);
 
+// ==== Background toggle (glass theme: gradient <-> photo) ====
+const applyBg = (mode) => {
+  document.documentElement.dataset.bg = mode;
+  $("bgBtn").setAttribute("aria-pressed", String(mode === "image"));
+  localStorage.setItem("weather-bg", mode);
+};
+
+$("bgBtn").addEventListener("click", () => {
+  applyBg(document.documentElement.dataset.bg === "image" ? "gradient" : "image");
+});
+
+applyBg(localStorage.getItem("weather-bg") === "image" ? "image" : "gradient");
+
 // ==== Page flow ====
 const loadWeather = async (place) => {
   showLoader();

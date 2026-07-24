@@ -1,25 +1,44 @@
 /* ================================================================
-   GLASSMORPHISM THEME — aurora sky, frosted glass cards
+   GLASSMORPHISM THEME — after Paperpillar's "Store Management
+   Dashboard" (dribbble.com/shots/14915793): pastel lavender-peach
+   backdrop, milky borderless glass, violet accent.
+   Background modes (toggled by the BG button, html[data-bg]):
+     gradient (default) | image (wallhaven Fuji photo)
+   Tweak everything from the tokens below.
    ================================================================ */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap");
 
 /* ============ Design tokens ============ */
 :root {
-  --clr-primary: #0284c7;
-  --clr-primary-deep: #0369a1;
-  --clr-accent: #f59e0b;
-  --clr-text: #0f172a;
-  --clr-text-soft: #43536a;
+  --clr-accent: #7c6cf5;
+  --clr-accent-deep: #5b4bd6;
+  --clr-accent-soft: rgba(124, 108, 245, 0.12);
+  --clr-text: #211f36;
+  --clr-text-soft: #6f6d85;
   --clr-error-text: #b91c1c;
 
-  --glass-bg: rgba(255, 255, 255, 0.42);
-  --glass-bg-strong: rgba(255, 255, 255, 0.62);
-  --glass-border: rgba(255, 255, 255, 0.65);
-  --glass-shadow: 0 8px 32px rgba(3, 63, 105, 0.12);
-  --blur: 16px;
+  /* Backdrop — gradient mode */
+  --bg-base: #dfe3f8;
+  --bg-gradient:
+    radial-gradient(55% 65% at 8% 0%, rgba(167, 178, 250, 0.75), transparent 65%),
+    radial-gradient(45% 55% at 100% 15%, rgba(214, 200, 250, 0.6), transparent 65%),
+    radial-gradient(55% 65% at 90% 100%, rgba(248, 178, 140, 0.55), transparent 65%),
+    linear-gradient(160deg, #ccd4f6 0%, #dcd8f2 45%, #f3d3c4 100%);
+  /* Backdrop — image mode */
+  --bg-image: url("../wallhaven-yqjr6d.jpg");
+  --bg-image-haze: rgba(255, 255, 255, 0.22);
 
-  --radius-lg: 20px;
-  --radius-md: 12px;
+  /* Glass surfaces */
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --glass-bg-strong: rgba(255, 255, 255, 0.72);
+  --surface: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 16px 40px rgba(76, 66, 145, 0.16);
+  --surface-shadow: 0 4px 16px rgba(76, 66, 145, 0.08);
+  --blur: 24px;
+
+  --radius-lg: 24px;
+  --radius-md: 16px;
   --radius-pill: 999px;
 
   --font-display: "Outfit", sans-serif;
@@ -37,23 +56,26 @@ body {
   color: var(--clr-text);
   line-height: 1.5;
   min-height: 100dvh;
-  background-color: #e0f2fe;
+  background-color: var(--bg-base);
 }
 
-/* Aurora backdrop */
+/* Pastel backdrop (gradient mode) */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -2;
-  background:
-    radial-gradient(55% 70% at 12% 8%, rgba(56, 189, 248, 0.55), transparent 65%),
-    radial-gradient(45% 60% at 88% 12%, rgba(251, 191, 36, 0.38), transparent 65%),
-    radial-gradient(60% 75% at 75% 95%, rgba(125, 211, 252, 0.55), transparent 70%),
-    linear-gradient(180deg, #dbeffe 0%, #f0f9ff 60%, #fef3c7 100%);
+  background: var(--bg-gradient);
 }
 
-/* Slow drifting glow for a living sky */
+/* Photo backdrop (image mode) */
+html[data-bg="image"] body::before {
+  background:
+    linear-gradient(var(--bg-image-haze), var(--bg-image-haze)),
+    var(--bg-image) center / cover no-repeat;
+}
+
+/* Slow drifting glow — gradient mode only */
 body::after {
   content: "";
   position: fixed;
@@ -65,6 +87,10 @@ body::after {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent 60%);
   pointer-events: none;
   animation: drift 14s ease-in-out infinite alternate;
+}
+
+html[data-bg="image"] body::after {
+  display: none;
 }
 
 @keyframes drift {
@@ -109,12 +135,15 @@ body::after {
   padding: 1.5rem;
 }
 
+/* Milkier cards for legibility over the photo */
+html[data-bg="image"] .card {
+  background: var(--glass-bg-strong);
+}
+
 .card-title {
-  font-size: 0.78rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--clr-text-soft);
   margin-bottom: 1rem;
 }
 
@@ -157,7 +186,7 @@ body::after {
 }
 
 .search:focus-within {
-  outline: 2px solid var(--clr-primary);
+  outline: 2px solid var(--clr-accent);
   outline-offset: 2px;
 }
 
@@ -188,26 +217,29 @@ body::after {
   flex-shrink: 0;
   border: none;
   border-radius: 50%;
-  background: var(--clr-primary);
+  background: var(--clr-accent);
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .searchBtn:hover {
-  background: var(--clr-primary-deep);
+  background: var(--clr-accent-deep);
 }
 
 .searchBtn:active {
   transform: scale(0.94);
 }
 
-/* Theme switcher button */
-.themeBtn {
+/* Theme switcher + background toggle buttons */
+.themeBtn,
+.bgBtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.1rem;
+  min-height: 44px;
+  padding: 0.55rem 1.1rem;
   font: inherit;
   font-weight: 500;
   color: var(--clr-text);
@@ -221,12 +253,27 @@ body::after {
   transition: background-color 0.2s ease;
 }
 
-.themeBtn:hover {
-  background: rgba(255, 255, 255, 0.8);
+.bgBtn {
+  width: 44px;
+  padding: 0;
 }
 
-.themeBtn .icon {
-  color: var(--clr-primary-deep);
+.themeBtn:hover,
+.bgBtn:hover {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.themeBtn .icon,
+.bgBtn .icon {
+  color: var(--clr-accent);
+}
+
+.bgBtn[aria-pressed="true"] {
+  background: var(--clr-accent);
+}
+
+.bgBtn[aria-pressed="true"] .icon {
+  color: #fff;
 }
 
 /* ============ Hero card ============ */
@@ -248,7 +295,7 @@ body::after {
 }
 
 .hero-location .icon {
-  color: var(--clr-primary-deep);
+  color: var(--clr-accent);
 }
 
 .hero-date {
@@ -282,7 +329,7 @@ body::after {
   width: 96px;
   height: 96px;
   stroke-width: 1.5;
-  color: var(--clr-primary-deep);
+  color: var(--clr-accent);
 }
 
 .hero-cond-label {
@@ -297,8 +344,9 @@ body::after {
   gap: 0.4rem;
   padding: 0.35rem 0.8rem;
   font-size: 0.9rem;
-  color: var(--clr-primary-deep);
-  background: rgba(2, 132, 199, 0.1);
+  font-weight: 500;
+  color: var(--clr-accent-deep);
+  background: var(--clr-accent-soft);
   border-radius: var(--radius-pill);
 }
 
@@ -314,9 +362,9 @@ body::after {
   align-items: center;
   gap: 0.75rem;
   padding: 0.9rem 1rem;
-  background: rgba(255, 255, 255, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: var(--surface);
   border-radius: var(--radius-md);
+  box-shadow: var(--surface-shadow);
 }
 
 .tile-icon {
@@ -326,8 +374,8 @@ body::after {
   height: 40px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: rgba(2, 132, 199, 0.12);
-  color: var(--clr-primary-deep);
+  background: var(--clr-accent-soft);
+  color: var(--clr-accent);
 }
 
 .tile-label {
@@ -351,12 +399,22 @@ body::after {
   grid-template-columns: 88px 1fr auto;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.8rem 0.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  padding: 0.8rem 0.5rem;
+  border-bottom: 1px solid rgba(33, 31, 54, 0.08);
 }
 
 .forecast-row:last-child {
   border-bottom: none;
+}
+
+/* Highlight today, like the reference's active pill */
+.forecast-row:first-child {
+  padding: 0.8rem 0.75rem;
+  margin-bottom: 0.25rem;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border-bottom: none;
+  box-shadow: var(--surface-shadow);
 }
 
 .fc-day {
@@ -373,7 +431,7 @@ body::after {
 }
 
 .fc-cond .icon {
-  color: var(--clr-primary-deep);
+  color: var(--clr-accent);
 }
 
 .fc-temps {
@@ -393,7 +451,7 @@ body::after {
   display: none;
   align-items: center;
   justify-content: center;
-  background: rgba(224, 242, 254, 0.6);
+  background: rgba(223, 227, 248, 0.6);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
@@ -405,8 +463,8 @@ body::after {
 .spinner {
   width: 48px;
   height: 48px;
-  border: 4px solid rgba(2, 132, 199, 0.2);
-  border-top-color: var(--clr-primary);
+  border: 4px solid rgba(124, 108, 245, 0.25);
+  border-top-color: var(--clr-accent);
   border-radius: 50%;
   animation: spin 0.9s linear infinite;
 }
@@ -454,7 +512,7 @@ body::after {
 }
 
 :focus-visible {
-  outline: 2px solid var(--clr-primary);
+  outline: 2px solid var(--clr-accent);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -498,10 +556,6 @@ body::after {
 
   .search {
     flex: 1 1 auto;
-  }
-
-  .themeBtn {
-    justify-content: center;
   }
 
   .hero-card {
