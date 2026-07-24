@@ -60,6 +60,18 @@ body {
   background-color: var(--bg-base);
 }
 
+/* Icon base sizes — defined early so component overrides below win */
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
 /* Pastel backdrop (gradient mode) */
 body::before {
   content: "";
@@ -500,17 +512,6 @@ html[data-bg="image"] body::after {
 }
 
 /* ============ Utilities ============ */
-.icon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-
-.icon-sm {
-  width: 16px;
-  height: 16px;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;

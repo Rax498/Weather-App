@@ -55,6 +55,19 @@ body {
   background-size: var(--bg-pattern-size);
 }
 
+/* Icon base sizes — defined early so component overrides below win */
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  stroke-width: 2.4;
+}
+
+.icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
 /* ============ Layout ============ */
 .app {
   max-width: 1160px;
@@ -455,18 +468,6 @@ body {
 }
 
 /* ============ Utilities ============ */
-.icon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  stroke-width: 2.4;
-}
-
-.icon-sm {
-  width: 16px;
-  height: 16px;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
