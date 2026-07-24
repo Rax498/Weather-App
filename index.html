@@ -18,7 +18,8 @@
       // Apply the saved theme + background mode before first paint to avoid a flash
       const savedTheme = localStorage.getItem("weather-theme");
       if (savedTheme === "glassmorphism" || savedTheme === "neobrutalism") {
-        document.getElementById("theme-style").href = `themes/${savedTheme}.css`;
+        // ?v= busts the browser cache so CSS edits always show up
+        document.getElementById("theme-style").href = `themes/${savedTheme}.css?v=${Date.now()}`;
       }
       document.documentElement.dataset.bg =
         localStorage.getItem("weather-bg") === "gradient" ? "gradient" : "image";

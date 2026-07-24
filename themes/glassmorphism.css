@@ -14,7 +14,7 @@
   --clr-accent-deep: #4f3fd8;
   --clr-accent-soft: rgba(106, 88, 238, 0.16);
   --clr-text: #16142a;
-  --clr-text-soft: #4c4a66;
+  --clr-text-soft: #3f3d58;
   --clr-error-text: #b91c1c;
 
   /* Backdrop — gradient mode: saturated blobs so the blur is visible */
@@ -30,8 +30,8 @@
   --bg-image-haze: rgba(255, 255, 255, 0);
 
   /* Glass surfaces */
-  --glass-bg: rgba(255, 255, 255, 0.38);
-  --glass-bg-strong: rgba(255, 255, 255, 0.62);
+  --glass-bg: rgba(255, 255, 255, 0.52);
+  --glass-bg-strong: rgba(255, 255, 255, 0.72);
   --surface: rgba(255, 255, 255, 0.82);
   --glass-border: rgba(255, 255, 255, 0.55);
   --glass-filter: blur(4px) saturate(135%);
@@ -148,7 +148,7 @@ html[data-bg="image"] body::after {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .brand {

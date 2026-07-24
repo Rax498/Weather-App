@@ -199,7 +199,8 @@ const THEMES = [
 
 const applyTheme = (id) => {
   const theme = THEMES.find((t) => t.id === id) ?? THEMES[0];
-  $("theme-style").href = `themes/${theme.id}.css`;
+  // ?v= busts the browser cache so CSS edits always show up
+  $("theme-style").href = `themes/${theme.id}.css?v=${Date.now()}`;
   $("themeLabel").textContent = theme.label;
   document.documentElement.dataset.theme = theme.id;
   localStorage.setItem("weather-theme", theme.id);
