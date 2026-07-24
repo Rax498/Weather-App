@@ -3,37 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>⛅ WEATHER APP</title>
+    <title>Weather App</title>
+    <meta name="description" content="7-day weather forecast for any city" />
+    <meta name="theme-color" content="#bae6fd" />
+    <link
+      rel="icon"
+      href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23f59e0b" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="%23f59e0b"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>'
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <!-- <h1>weather app</h1> -->
-    <div id="loadScreen">
+    <div id="loadScreen" class="loader" role="status" aria-label="Loading weather data">
       <div class="spinner"></div>
     </div>
-    <div class="container">
-      <div class="navbar grid_box">
-        <div class="searchBar">
-          <input id="search" type="text" placeholder="Enter city name" />
-          <button id="searchBtn" class="searchBtn">🍳</button>
-        </div>
-      </div>
-      <div class="weakly_forecast grid_box">
-        <span class="nameTag"> 7-DAY-FORECAST</span>
-        <div id="elements" class="elements">elements</div>
-      </div>
-      <div id="main" class="main grid_box">mainSection</div>
-      <div class="condition grid_box">
-        <span class="nameTag">AIR CONDITIONS</span>
-        <div id="condition_elements">conditions</div>
-      </div>
+
+    <div class="app">
+      <header class="topbar">
+        <p class="brand">
+          <svg class="icon brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" /><path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" /><path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" />
+          </svg>
+          Weather App
+        </p>
+
+        <form id="searchForm" class="search" role="search">
+          <svg class="icon search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <label class="sr-only" for="search">City name</label>
+          <input id="search" type="search" placeholder="Search for a city…" autocomplete="off" />
+          <button id="searchBtn" class="searchBtn" type="submit" aria-label="Search">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </button>
+        </form>
+      </header>
+
+      <p id="error" class="error" role="alert" hidden></p>
+
+      <main class="layout">
+        <section id="main" class="card hero-card" aria-label="Current weather"></section>
+
+        <section class="card conditions-card" aria-labelledby="conditions-title">
+          <h2 id="conditions-title" class="card-title">Air conditions</h2>
+          <div id="condition_elements" class="conditions-grid"></div>
+        </section>
+
+        <aside class="card forecast-card" aria-labelledby="forecast-title">
+          <h2 id="forecast-title" class="card-title">7-day forecast</h2>
+          <div id="elements" class="forecast-list"></div>
+        </aside>
+      </main>
     </div>
+
     <script type="module" src="index.js"></script>
   </body>
 </html>
