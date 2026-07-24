@@ -282,9 +282,9 @@ body {
 }
 
 .icon-hero {
-  width: 120px;
-  height: 120px;
-  padding: 1.2rem;
+  width: 88px;
+  height: 88px;
+  padding: 1rem;
   stroke-width: 2;
   color: var(--clr-text);
   background: var(--clr-cyan);
@@ -539,9 +539,9 @@ body {
   }
 
   .icon-hero {
-    width: 96px;
-    height: 96px;
-    padding: 1rem;
+    width: 72px;
+    height: 72px;
+    padding: 0.8rem;
   }
 
   .forecast-row {
