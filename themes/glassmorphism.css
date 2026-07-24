@@ -1,3 +1,8 @@
+/* ================================================================
+   GLASSMORPHISM THEME — aurora sky, frosted glass cards
+   ================================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap");
+
 /* ============ Design tokens ============ */
 :root {
   --clr-primary: #0284c7;
@@ -195,6 +200,33 @@ body::after {
 
 .searchBtn:active {
   transform: scale(0.94);
+}
+
+/* Theme switcher button */
+.themeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  font: inherit;
+  font-weight: 500;
+  color: var(--clr-text);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.themeBtn:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.themeBtn .icon {
+  color: var(--clr-primary-deep);
 }
 
 /* ============ Hero card ============ */
@@ -466,6 +498,10 @@ body::after {
 
   .search {
     flex: 1 1 auto;
+  }
+
+  .themeBtn {
+    justify-content: center;
   }
 
   .hero-card {

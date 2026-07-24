@@ -189,6 +189,30 @@ const renderForecast = (d) => {
     .join("");
 };
 
+// ==== Theme switching ====
+// Add a theme: create themes/<id>.css, add an entry here (and to the
+// allowlist in index.html's boot script).
+const THEMES = [
+  { id: "neobrutalism", label: "Neo" },
+  { id: "glassmorphism", label: "Glass" },
+];
+
+const applyTheme = (id) => {
+  const theme = THEMES.find((t) => t.id === id) ?? THEMES[0];
+  $("theme-style").href = `themes/${theme.id}.css`;
+  $("themeLabel").textContent = theme.label;
+  document.documentElement.dataset.theme = theme.id;
+  localStorage.setItem("weather-theme", theme.id);
+};
+
+$("themeBtn").addEventListener("click", () => {
+  const current = localStorage.getItem("weather-theme") ?? THEMES[0].id;
+  const idx = THEMES.findIndex((t) => t.id === current);
+  applyTheme(THEMES[(idx + 1) % THEMES.length].id);
+});
+
+applyTheme(localStorage.getItem("weather-theme") ?? THEMES[0].id);
+
 // ==== Page flow ====
 const loadWeather = async (place) => {
   showLoader();
