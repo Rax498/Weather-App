@@ -203,6 +203,8 @@ const applyTheme = (id) => {
   $("themeLabel").textContent = theme.label;
   document.documentElement.dataset.theme = theme.id;
   localStorage.setItem("weather-theme", theme.id);
+  // The background toggle only exists in the glass theme
+  $("bgBtn").hidden = theme.id !== "glassmorphism";
 };
 
 $("themeBtn").addEventListener("click", () => {
@@ -224,7 +226,7 @@ $("bgBtn").addEventListener("click", () => {
   applyBg(document.documentElement.dataset.bg === "image" ? "gradient" : "image");
 });
 
-applyBg(localStorage.getItem("weather-bg") === "image" ? "image" : "gradient");
+applyBg(localStorage.getItem("weather-bg") === "gradient" ? "gradient" : "image");
 
 // ==== Page flow ====
 const loadWeather = async (place) => {
